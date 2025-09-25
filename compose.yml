@@ -104,6 +104,7 @@ services:
     image: vsimakhin/web-logbook:latest
     command: -dsn /data/web-logbook.sql
     restart: unless-stopped
+    user: root
     ports:
       - 4000:4000
     volumes:
