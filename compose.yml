@@ -6,7 +6,7 @@ services:
       - homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
       - /run/dbus:/run/dbus:ro
-      - ./homeassistant.yaml:/config/configuration.yaml
+      - ./config/homeassistant.yaml:/config/configuration.yaml
     restart: unless-stopped
     privileged: true
     network_mode: host
@@ -21,7 +21,7 @@ services:
       - mosquitto_config:/mosquitto/config:rw
       - mosquitto_data:/mosquitto/data:rw
       - mosquitto_log:/mosquitto/log:rw
-      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./config/mosquitto.conf:/mosquitto/config/mosquitto.conf
     restart: unless-stopped
 
   zigbee2mqtt:
@@ -56,7 +56,7 @@ services:
       - EMAIL=${EMAIL}
     volumes:
       - swag:/config
-      - ./site-confs:/config/nginx/site-confs
+      - ./config/site-confs:/config/nginx/site-confs
     restart: unless-stopped
     ports:
       - 80:80
