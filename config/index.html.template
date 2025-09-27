@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Server Dashboard</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 2rem;
+            gap: 1.5rem;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            text-align: center;
+            width: 220px;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .card a {
+            display: block;
+            text-decoration: none;
+            color: #4CAF50;
+            margin: 0.5rem 0;
+            font-weight: bold;
+        }
+        .card a:hover {
+            text-decoration: underline;
+        }
+        .card i {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Home Server Dashboard</h1>
+    </header>
+    <main>
+        <!-- Home Assistant -->
+        <div class="card">
+            <h2><i class="fas fa-home"></i> Home Assistant</h2>
+            <a href="http://home.local">home.local</a>
+            <a href="http://home.${DOMAIN}">home.${DOMAIN}</a>
+            <a href="http://raspberrypi:8123">Port 8123</a>
+        </div>
+        <!-- Pi-hole -->
+        <div class="card">
+            <h2><i class="fas fa-shield-alt"></i> Pi-hole</h2>
+            <a href="http://pihole.local/admin">pihole.local</a>
+            <a href="http://pihole.${DOMAIN}/admin">pihole.${DOMAIN}</a>
+            <a href="http://raspberrypi:8080/admin">Port 8080</a>
+        </div>
+        <!-- Web-Logbook -->
+        <div class="card">
+            <h2><i class="fas fa-book"></i> Web-Logbook</h2>
+            <a href="http://fly.local">fly.local</a>
+            <a href="http://fly.${DOMAIN}">fly.${DOMAIN}</a>
+            <a href="http://raspberrypi:4000">Port 4000</a>
+        </div>
+        <!-- Zigbee2MQTT -->
+        <div class="card">
+            <h2><i class="fas fa-project-diagram"></i> Zigbee2MQTT</h2>
+            <a href="http://zigbee.local">zigbee.local</a>
+            <a href="http://zigbee.${DOMAIN}">zigbee.${DOMAIN}</a>
+            <a href="http://raspberrypi:8081">Port 8081</a>
+        </div>
+    </main>
+</body>
+</html>
