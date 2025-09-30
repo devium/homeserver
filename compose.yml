@@ -54,12 +54,12 @@ services:
       - VALIDATION=dns
       - DNSPLUGIN=hetzner
       - EMAIL=${EMAIL}
+      - HETZNER_API_TOKEN
     volumes:
       - swag:/config
       - ./config/site-confs:/config/nginx/site-confs
-      - ./config/hetzner.ini:/config/dns-config/hetznerini
       - ./config/index.html.template:/config/www/index.html.template
-      - ./config/90_index_envsub.sh:/custom-cont-init.d/90_index_envsub.sh
+      - ./config/90_swag_envsub.sh:/custom-cont-init.d/90_envsub.sh
     restart: unless-stopped
     ports:
       - 80:80

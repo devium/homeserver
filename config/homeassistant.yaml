@@ -6,17 +6,6 @@ default_config:
 frontend:
   themes: !include_dir_merge_named themes
 
-zha:
-  custom_quirks_path: /config/custom_zha_quirks/
-  zigpy_config:
-    ota:
-      ikea_provider: true                        # Auto update Trådfri devices
-      ledvance_provider: true                    # Auto update LEDVANCE/OSRAM devices
-      salus_provider: true                       # Auto update SALUS/Computime devices
-      inovelli_provider: true                    # Auto update INOVELLI devices
-      thirdreality_provider: true                # Auto update 3REALITY devices
-      otau_directory: /config/ota_updates   # Utilize .ota files to update everything 
-
 http:
   use_x_forwarded_for: true
   trusted_proxies:
@@ -26,15 +15,6 @@ http:
 
 logger:
   default: warning
-
-google_assistant:
-  project_id: home-assistant-2267
-  service_account: !include service-account.json
-  report_state: true
-  exposed_domains:
-    - switch
-    - light
-  expose_by_default: true
 
 automation: !include automations.yaml
 script: !include scripts.yaml
