@@ -21,7 +21,9 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - mosquitto:/mosquitto:rw
+      - mosquitto_config:/mosquitto/config:rw
+      - mosquitto_data:/mosquitto/data:rw
+      - mosquitto_log:/mosquitto/log:rw
       # Make config RO to prevent container from chowning it.
       - ./config/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
     restart: unless-stopped
@@ -128,6 +130,7 @@ services:
       - 4000:4000
     volumes:
       - web-logbook:/data
+      - web-logbook_certs:/certs
 
   backup:
     container_name: backup
@@ -139,7 +142,8 @@ services:
       - pihole:/backup/pihole:ro
       - web-logbook:/backup/web-logbook:ro
       - zigbee2mqtt:/backup/zigbee2mqtt:ro
-      - mosquitto:/backup/mosquitto:ro
+      - mosquitto_config:/backup/mosquitto_config:ro
+      - mosquitto_data:/backup/mosquitto_data:ro
     environment:
       BACKUP_CRON_EXPRESSION: "0 4 * * MON"
       AWS_S3_BUCKET_NAME: ${AWS_BUCKET_NAME}
@@ -153,5 +157,8 @@ volumes:
   pihole:
   dnsmasq:
   web-logbook:
+  web-logbook_certs:
   zigbee2mqtt:
-  mosquitto:
+  mosquitto_config:
+  mosquitto_data:
+  mosquitto_log:
